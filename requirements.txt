@@ -1,0 +1,16 @@
+litestar==2.2.1
+uvicorn==0.23.2
+gradio
+more-itertools
+openai==0.28.1
+python-dotenv
+retry
+scikit-learn==1.3.0
+numpy==1.26.2
+
+# dev dependencies
+pytest
+pytest-cov
+pytest-mock
+pytest-asyncio
+pytest-timeout

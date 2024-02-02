@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: api
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+    command: ["uvicorn", "api.api:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
+
+  web:
+    container_name: web
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - mynetwork
+    env_file:
+      - .env
+    command: ["python3", "api/web.py"]
+
+
+networks:
+  mynetwork:
+    external: false
+    driver: bridge
+    name: mynetwork
